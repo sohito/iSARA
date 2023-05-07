@@ -1,0 +1,39 @@
+@use "responsive" as *;
+
+@mixin sectionTitle($bdColor) {
+    text-align: center;
+    padding: 1em 0;
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto 1em;
+    font-weight: 500;
+    &::before {
+        content: "";
+        height: 40px;
+        width: 40px;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-top: 3px solid $bdColor;
+        border-left: 3px solid $bdColor;
+    }
+    &::after {
+        content: "";
+        height: 40px;
+        width: 40px;
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        border-bottom: 3px solid $bdColor;
+        border-right: 3px solid $bdColor;
+    }
+    @include responsive(lg) {
+        font-size: 24px;
+    }
+    @include responsive(sm) {
+        font-size: 18px;
+    }
+}

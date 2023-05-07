@@ -1,0 +1,1722 @@
+@use "reset";
+@use "responsive" as *;
+@use "button" as *;
+@use "sectionTitle" as *;
+@use "acordion" as *;
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+$mainColor: rgb(250, 210, 98);
+$mainColor2: rgb(255, 249, 228);
+$subColor: rgb(59, 101, 210);
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.header {
+    background: white;
+    padding: 16px 0;
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    @include responsive(sm) {
+        padding: 0;
+    }
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @include responsive(sm) {
+            padding-right: 0;
+        }
+    }
+    &_logo {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        @include responsive(sm) {
+            flex-direction: column-reverse;
+            gap: 5px;
+        }
+        img {
+            height: 32px;
+            @include responsive(sm) {
+                height: 24px;
+            }
+        }
+        p {
+            font-size: 14px;
+            font-weight: 600;
+            @include responsive(lg) {
+                font-size: 12px;   
+            }
+        }
+    }
+    &_action {
+        img {
+            display: none;
+            width: 28px;
+            @include responsive(sm) {
+                display: inline-block;
+            }
+        }
+        .sp {
+            display: none;
+            @include responsive(sm) {
+                display: inline-block;
+            }
+        }
+        .pc {
+            @include responsive(sm) {
+                display: none;
+            }
+        }     
+    }
+}
+
+.mainvisual {
+    padding: 130px 0;
+    background-image: url(../img/mainvisual-background.jpg);
+    background-size: cover;
+    background-position: center;
+    @include responsive(sm) {
+        padding: 110px 40px 40px;  
+    }
+    .container {
+        text-align: center;
+        img {
+            height: 64px;
+            margin-top: 28px;
+        }
+    }
+    &_title {
+        font-size: 28px;
+        font-weight: bold;
+        line-height: 1.7em;
+        letter-spacing: .1em;
+        @include responsive(lg) {
+            font-size: 24px;   
+        }
+        @include responsive(sm) {
+            font-size: 18px;   
+        }
+    }
+    &_name {
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 48px;
+        @include responsive(lg) {
+            font-size: 18px;   
+        }
+        @include responsive(sm) {
+            font-size: 12px;   
+        }
+    }
+}
+
+.cta {
+    background: $mainColor;
+    padding: 32px 0;
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        color: white;
+    }
+    &_copy {
+        font-weight: bold;
+        font-size: 18px;
+        letter-spacing: .08em;
+        line-height: 1.7;
+    }
+    &_attention {
+        color: red;
+        background-color: white;
+        font-weight: bold;
+        margin-top: .5em;
+        font-size: 18px;
+        border-radius: .2em;
+        @include responsive(lg) {
+            font-size: 14px; 
+        }
+    }
+    &_info {
+        font-weight: bold;
+        font-size: 20px;
+        letter-spacing: .08em;
+        & + & {
+            margin-top: 32px;
+            @include responsive(lg) {
+                margin-top: 24px;
+            }
+        }
+        @include responsive(lg) {
+            font-size: 18px; 
+        }
+        @include responsive(sm) {
+            font-size: 16px;
+        }
+        span {
+            @include responsive(sm) {
+                display: block;
+            }
+        }
+    }
+    &_sns {
+        margin-top: 16px;
+    }
+}
+
+.section_title {
+    @include sectionTitle($mainColor);
+}
+
+.question {
+    background-image: url(../img/question-background.png);
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: -2;
+    padding: 32px 0 0;
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-bottom: 112px;
+        h2 {
+            span {
+                @include responsive(sm) {
+                    display: block;
+                }
+            }
+        }
+    }
+    p {
+        font-size: 18px;
+        & + p {
+            margin-top: 24px;
+        }
+        strong {
+            position: relative;
+            &::before {
+                content: "";
+                width: 100%;
+                height: 4px;
+                background-color: $mainColor;
+                display: inline-block;
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                z-index: -1;
+            }
+        }
+        @include responsive(lg) {
+            font-size: 18px;
+        }
+        @include responsive(sm) {
+            font-size: 12px;
+        }
+    }
+    .br-sm {
+        display: none;
+        @include responsive(sm) {
+            display: inline;
+        }
+    }
+    &::after {
+        content: "ABOUT";
+        color: white;
+        background-color: $mainColor;
+        width: 80px;
+        height: 80px;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 80px;
+        border-radius: 50%;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        z-index: 2;
+        transform: translate(-50%, 50%);
+        @include responsive(sm) {
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            font-size: 14px;
+        }
+    }
+}
+
+.introduce {
+    padding: 80px 0;
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        > p {
+            font-size: 20px;
+            @include responsive(lg) {
+                font-size: 16px;
+            }
+        }
+    }
+    span {
+        @include responsive(sm) {
+            display: block;
+        }
+    }
+    .skills {
+        text-align: center;
+        border: 2px solid $mainColor;
+        padding: 20px;
+        border-radius: 5px;
+        margin-top: 32px;
+        width: 100%;
+        > p {
+            font-size: 20px;
+            @include responsive(lg) {
+                font-size: 16px;
+            }
+        }
+        ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            li {
+                width: 150px;
+                height: 150px;
+                @include responsive(sm) {
+                    width: 120px;
+                    height: 100px;
+                }
+            }
+            div {
+                display: flex;
+            }
+            img {
+                width: 100%;
+                object-fit: contain;
+
+            }
+            p {
+                font-size: 12px;
+                margin-top: -14px;
+                @include responsive(sm) {
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+}
+
+.service {
+    background-image: url(../img/service-background.png);
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    color: white;
+    padding: 48px 0 0;
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        > p {
+            font-size: 20px;
+            line-height: 1.9;
+            margin-top: 20px;
+            letter-spacing: .08em;
+            span {
+                color: $mainColor;
+                font-weight: bold;
+            }
+            .br-sub {
+                display: none;
+                @include responsive(sm) {
+                    display: block;
+                }
+            }
+            @include responsive(lg) {
+                font-size: 16px;
+            }
+            @include responsive(sm) {
+                font-size: 12px;
+            }
+        }
+    }
+    &-concept {
+        letter-spacing: .08em;
+        font-size: 26px;
+        br {
+            display: none;
+            @include responsive(sm) {
+                display: block;
+            }
+        }
+        @include responsive(lg) {
+            font-size: 22px;
+        }
+        @include responsive(sm) {
+            font-size: 18px;
+        }
+    }
+    .step {
+        display: flex;
+        gap: 16px;
+        text-align: center;
+        width: 100%;
+        margin-top: 24px;
+        @include responsive(lg) {
+            flex-direction: column;
+            align-items: center;
+        }
+        @include responsive(sm) {
+            margin-top: 0;
+        }
+        li {
+            background: white;
+            width: calc((100% - 32px) / 3);
+            height: 170px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-radius: 5px;
+            @include responsive(lg) {
+                width: 40%;
+            }
+            @include responsive(sm) {
+                width: 80%;
+                height: 130px;
+            }
+            & p:nth-child(1) {
+                background: $mainColor;
+                width: 85%;
+                margin: 0 auto;
+                border-radius: 5px;
+                @include responsive(sm) {
+                    font-size: 14px;
+                }
+            }
+            & p:nth-child(2),
+            & p:nth-child(3) {
+                color: black;
+                @include responsive(sm) {
+                    font-size: 12px;
+                }
+            }
+            p + p {
+                margin-top: 16px;
+                @include responsive(sm) {
+                    margin-top: 12px;
+                }
+            }
+        }
+    }
+    &-important {
+        background: $subColor;
+        text-align: center;
+        font-size: 20px;
+        padding: 32px 0;
+        margin-top: 32px;
+        span {
+            color: $mainColor;
+        }
+        .br-sub {
+            display: none;
+            @include responsive(sm) {
+                display: block;
+            }
+        }
+        @include responsive(lg) {
+            font-size: 16px;
+        }
+        @include responsive(sm) {
+            padding: 16px 0;
+            font-size: 14px;
+        }
+        
+    }
+}
+
+.learn {
+    padding: 40px 0;
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        & > p {
+            margin-top: 30px;
+            color: #666;
+        }
+        & > p:nth-child(2) {
+            font-size: 1.2rem;
+            @include responsive(lg) {
+                font-size: 1rem;
+            }
+            @include responsive(sm) {
+                font-size: .9rem;
+            }
+        }
+        & > p:nth-child(4) {
+            font-weight: bold;
+            @include responsive(sm) {
+                font-size: .8rem;
+            }
+        }
+    }
+    h2 {
+        font-size: 1.7rem;
+        @include responsive(lg) {
+            font-size: 1.5rem;
+        }
+        @include responsive(sm) {
+            font-size: 1.2rem;
+        }
+    }
+    ul {
+        display: flex;
+        gap: 32px;
+        margin-top: 40px;
+        flex-wrap: wrap;
+        justify-content: center;
+        @include responsive(sm) {
+            gap: 16px;
+        }
+        div {
+            @include responsive(sm) {
+                display: flex;
+            }
+        }
+    }
+    li {
+        height: 190px;
+        width: 190px;
+        background: $mainColor;
+        color: white;
+        padding: 30px;
+        border-radius: 50%;
+        display: inline-block;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        @include responsive(sm) {
+            height: 130px;
+            width: 130px;
+            padding: 20px;
+        }
+        p {
+            font-weight: bold;
+            @include responsive(sm) {
+                font-size: .7rem;
+            }
+        }
+    }
+    li + li {
+        margin-left: 32px;
+        @include responsive(sm) {
+            margin-left: 16px;
+        }
+    }
+    i {
+        font-size: 3.5rem;
+        margin-bottom: 10px;
+        @include responsive(sm) {
+            font-size: 2rem;
+        }
+    }
+    span {
+        @include responsive(sm) {
+            display: block;
+        }
+    }
+}
+
+.merit {
+    background: $mainColor2;
+    padding: 48px 0;
+    .container {
+        .section_title {
+            span {
+                font-weight: bold;
+                display: block;
+            }
+        }
+        & > p {
+            font-size: 1rem;
+            text-align: center;
+            margin-top: 30px;
+            @include responsive(lg) {
+                font-size: .8rem;
+                margin: 30px auto 0;
+            }
+            span {
+                display: block;
+            }
+            br {
+                @include responsive(sm) {
+                    display: none;
+                }
+            }
+        }
+    }
+    .section_title {
+        span {
+            display: block;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-top: 16px;
+            @include responsive(sm) {
+                font-size: 1.1rem;
+            }
+        }
+        br {
+            display: none;
+            @include responsive(sm) {
+                display: inline;
+            }
+        }
+    }
+    ul {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        @include responsive(sm) {
+            flex-direction: column;
+        }
+    }
+    li {
+        width: calc(100% / 3);
+        @include responsive(lg) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        @include responsive(sm) {
+            width: 100%;
+            text-align: center;
+        }
+        img {
+            width: 100%;
+            @include responsive(sm) {
+                height: 100px;
+                object-fit: cover;
+                margin-top: 20px;
+            }
+        }
+    }
+    h3 {
+        color: $mainColor;
+        font-weight: normal;
+    }
+    p {
+        font-size: .8rem;
+        @include responsive(lg) {
+            width: 90%;
+        }
+    }
+    &-support {
+        text-align: center;
+        background: white;
+        border: 2px solid $mainColor;
+        padding: 32px 0;
+        margin-top: 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            @include responsive(sm) {
+                font-size: 1.2rem;
+            }
+        }
+        p {
+            margin-top: 10px;
+            font-size: 1rem;
+            
+            &:nth-of-type(1) {
+                font-weight: bold;
+                font-size: 1.3rem;
+                @include responsive(lg) {
+                    font-size: 1rem;
+                }
+                @include responsive(sm) {
+                    font-size: .9rem;
+                }
+
+            }
+
+            &:nth-of-type(2) {
+                @include responsive(lg) {
+                    font-size: .9rem;
+                }
+                @include responsive(sm) {
+                    font-size: .6rem;
+                }
+                br {
+                    &:nth-of-type(2) {
+                        display: none;
+                    }
+                }
+            }
+
+            span {
+                @include responsive(sm) {
+                    display: block;
+
+                }
+            }
+
+        }
+    }
+}
+
+.member {
+    background-image: url(../img/member-visual.png);
+    background-size: cover;
+    background-color: black;
+    height: 100%;
+    color: white;
+    padding-bottom: 48px;
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 48px;
+        h2 {
+            position: relative;
+            @include responsive(sm) {
+                font-size: 1rem;
+            }
+            &::before {
+                font-family: 'Material Icons';
+                content: '\e851';
+                font-size: 2rem;
+                position: absolute;
+                top: 2px;
+                left: -33px;
+                @include responsive(sm) {
+                    font-size: 1.3rem;
+                    top: 2px;
+                    left: -20px;
+                }
+
+            }
+        }
+        & > p {
+            margin-top: 20px;
+            @include responsive(sm) {
+                text-align: center;
+                font-size: .8rem;
+            }
+            br {
+                display: none;
+                @include responsive(sm) {
+                    display: inline;
+                }
+            }
+        }
+        ul {
+            display: flex;
+            gap: 32px;
+            margin-top: 48px;
+            width: 100%;
+            @include responsive(lg) {
+                flex-direction: column;
+            }
+            li {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                height: 100%;
+                img {
+                    width: 200px;
+                    height: 200px;
+                    object-fit: cover;
+                    border-radius: 50%;
+                    position: relative;
+                    @include responsive(sm) {
+                        width: 130px;
+                        height: 130px;
+                    }
+                }
+                div {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    border: 3px solid white;
+                    padding: 48px 32px;
+                    height: 400px;
+                    margin-top: -32px;
+                    @include responsive(lg) {
+                        height: 100%;
+                    }
+                    @include responsive(sm) {
+                        width: 95vw;
+                        padding: 32px 8px;
+                    }
+                    p {
+                        @include responsive(sm) {
+                            font-size: .8rem;
+                        }
+                        & + p {
+                            margin-top: 8px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.reality {
+    padding: 0;
+    &-question {
+        color: white;
+        background: $mainColor;
+        position: relative;
+        &::after {
+            content: "";
+            width: 50px;
+            height: 50px;
+            background: $mainColor;
+            clip-path: polygon(100% 50%, 50% 100%, 0% 50%);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 48%);
+        }
+        .container {
+            padding: 40px 16px 20px;
+            p {
+                background-color: white;
+                color: $mainColor;
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                text-align: center;
+                line-height: 80px;
+                margin: 0 auto -10px;
+                @include responsive(sm) {
+                    width: 60px;
+                    height: 60px;
+                    line-height: 60px;
+                    font-size: .8rem
+                }
+            }
+            .section_title {
+                @include sectionTitle(white);
+                font-weight: bold;
+                font-size: 1.7rem;
+                @include responsive(lg) {
+                    font-size: 1.2rem;
+                }
+                @include responsive(sm) {
+                    font-size: .8rem;
+                    margin-top: 16px;
+                }
+            }
+        }
+    }
+    &-answer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 48px 0 64px;
+        .container {
+            max-width: 800px;
+            & > div {
+                p {
+                    text-align: center;
+                    &:nth-of-type(1) {
+                        font-size: 2rem;
+                        font-weight: bold;
+                        @include responsive(lg) {
+                            font-size: 1.5rem;
+                        }
+                        @include responsive(sm) {
+                            font-size: 1.1rem;
+                        }
+                    }
+                    &:nth-of-type(2) {
+                        font-weight: bold;
+                        margin-top: 5px;
+                        @include responsive(lg) {
+                            font-size: .9rem;
+                            font-weight: normal;
+                        }
+                    }
+                    &:nth-of-type(3) {
+                        margin-top: 24px;
+                        @include responsive(lg) {
+                            font-size: .8rem;
+                        }
+                        br {
+                            display: none;
+                            @include responsive(sm) {
+                                display: inline;
+                            }
+                        }
+                    }
+                }
+            }
+            ul {
+                display: flex;
+                flex-direction: column;
+                gap: 32px;
+                margin-top: 32px;
+                li {
+                    display: flex;
+                    gap: 32px;
+                    @include responsive(sm) {
+                        gap: 16px;
+                    }
+                    div {
+                        &:nth-of-type(1) {
+                            width: 33%;
+                            height: 100%;
+                            aspect-ratio: 1 / 1;
+                            img {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                                border: 3px solid $mainColor;
+                            }
+                        }
+                        &:nth-of-type(2) {
+                            width: 67%;
+                        }
+                        p {
+                            font-size: 1.1rem;
+                            color: #aaa;
+                            font-style: italic;
+                            @include responsive(sm) {
+                                font-size: .9rem;
+                            }
+                            &:nth-of-type(2){
+                                margin-top: 5px;
+                            } 
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.content {
+    background-image: url(../img/content-visual.png);
+    background-size: cover;
+    .container {
+        padding: 48px 0;
+        .isara-learn {
+            color: white;
+            text-align: center;
+            h2 {
+                font-size: 1.8rem;
+                @include responsive(lg) {
+                    font-size: 1.5rem;
+                }
+                @include responsive(sm) {
+                    font-size: 1.2rem;
+                }
+            }
+            p {
+                margin-top: 8px;
+                @include responsive(sm) {
+                    font-size: .8rem;
+                }
+            }
+        }
+        .learn-list {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            margin-top: 32px;
+            @include responsive(sm) {
+                flex-direction: column;
+                padding: 0 16px;
+                gap: 0;
+            }
+            dl {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                border: 2px solid $subColor;
+                border-radius: 5px;
+                background: white;
+                width: 400px;
+                font-weight: bold;
+                letter-spacing: .15rem;
+                height: 100%;
+                @include responsive(lg) {
+                    width: 300px;
+                }
+                @include responsive(sm) {
+                    width: 100%;
+                }
+            }
+            dt {
+                color: white;
+                background-color: $subColor;
+                width: 100%;
+                text-align: center;
+                line-height: 56px;
+                font-size: 1.1rem;
+                @include responsive(lg) {
+                    font-size: 1rem;
+                }
+                @include responsive(sm) {
+                    font-size: .9rem;
+                }
+            }
+            dd {
+                margin: 0;
+                padding: 12px;
+                border-top: 1px solid #eee;
+                width: 100%;
+                text-align: center;
+                @include responsive(lg) {
+                    font-size: .9rem;
+                    padding: 10px;
+                }
+                @include responsive(sm) {
+                    font-size: .7rem;
+                }
+                br {
+                    display: none;
+                    @include responsive(lg) {
+                        display: inline;
+                    }
+                    @include responsive(sm) {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+    .eternal-support {
+        background: $subColor;
+        color: white;
+        text-align: center;
+        padding: 32px 0;
+        font-size: 1.2rem;
+        @include responsive(sm) {
+            font-size: 1rem;
+            padding: 16px 0;
+        }
+        span {
+            @include responsive(sm) {
+                display: block;
+            }
+        }
+        br {
+            @include responsive(sm) {
+                display: none;
+            }
+        }
+    }
+}
+
+.step {
+    padding: 48px 0 16px;
+    .container {
+        @include responsive(lg) {
+            padding: 0 48px;
+        }
+        @include responsive(sm) {
+            padding: 0 16px;
+        }
+        .steps {
+            h2 {
+                text-align: center;
+                @include responsive(sm) {
+                    font-size: 1.1rem;
+                }
+            }
+            img {
+                margin-top: 32px;
+                width: 100%;
+                @include responsive(sm) {
+                    display: none;
+                }
+            }
+        }
+        ul {
+            margin-top: 16px;
+            li {
+                display: flex;
+                padding: 32px 48px;
+                background: $mainColor2;
+                border-radius: 10px;
+                user-select: none;
+                @include responsive(sm) {
+                    flex-direction: column;
+                    padding: 8px 16px;
+                    margin-top: 5px;
+                    cursor: pointer;
+                }
+                div {
+                    &:nth-of-type(1) {
+                        width: 20%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        text-align: center;
+                        gap: 8px;
+                        @include responsive(lg) {
+                            width: 30%;
+                        }
+                        @include responsive(sm) {
+                            flex-direction: row;
+                            width: 100%;
+                            justify-content: flex-start;
+                        }
+                        img {
+                            width: 100%;
+                            height: 100px;
+                            display: inline;
+                            @include responsive(sm) {
+                                width: 40px;
+                                height: 40px;
+                            }
+                        }
+                        h3 {
+                            @include responsive(lg) {
+                                font-size: 1.1rem;
+                            }
+                            @include responsive(sm) {
+                                font-size: .9rem;
+                                margin-left: 5px;
+                                display: grid;
+                                place-items: center;
+                            }
+                            br {
+                                @include responsive(sm) {
+                                    display: none;
+                                }
+                            }
+                            &:hover {
+                                @include responsive(sm) {
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
+                        
+                    }
+                    &:nth-of-type(2) {
+                        width: 80%;
+                        @include responsive(lg) {
+                            font-size: .8rem;
+                        }
+                        @include responsive(sm) {
+                            width: 100%;
+                            padding-bottom: 16px;
+                        }
+                    }
+                }
+                .acordion-menu {
+                    position: relative;
+                    &::after {
+                        font-family: 'Material Icons';
+                        content: '\e5cf';
+                        display: none;
+                        @include responsive(sm) {
+                            display: inline;
+                            position: absolute;
+                            top: 50%;
+                            right: 0;
+                            font-size: 2rem;
+                            transform: translate(0, -50%);
+                        }
+                    }
+                    &.open::after {
+                        font-family: 'Material Icons';
+                        content: '\e5ce';
+                        display: none;
+                        @include responsive(sm) {
+                            display: inline;
+                            position: absolute;
+                            top: 50%;
+                            right: 0;
+                            font-size: 2rem;
+                            transform: translate(0, -50%);
+                        }
+                    }
+                }
+                .acordion-content {
+                    @include responsive(sm) {
+                        display: none;
+                    }
+                }
+            }
+            .step1 {
+                p {
+                    &:nth-of-type(1) {
+                        margin-top: 16px;
+                        font-weight: bold;
+                    }
+                    &:nth-of-type(2) {
+                        font-weight: bold;
+                        margin-top: 16px;
+                    }
+                    &:nth-of-type(3) {
+                        margin-top: 16px;
+                    }
+                }
+            }
+            .step2 {
+                p {
+                    &:nth-of-type(1) {
+                        margin-top: 16px;
+                        font-weight: bold;
+                    }
+                    &:nth-of-type(2) {
+                        margin-top: 16px;
+                    }
+                    &:nth-of-type(3) {
+                        font-weight: bold;
+                        margin-top: 16px;
+                    }
+                }
+            }
+            .step3 {
+                p {
+                    &:nth-of-type(1) {
+                        margin-top: 16px;
+                        font-weight: bold;
+                    }
+                    &:nth-of-type(2) {
+                        font-weight: bold;
+                        margin-top: 16px;
+                    }
+                }
+            }
+            .step4 {
+                p {
+                    &:nth-of-type(1) {
+                        margin-top: 16px;
+                        font-weight: bold;
+                    }
+                    &:nth-of-type(2) {
+                        font-weight: bold;
+                        margin-top: 16px;
+                    }
+                    &:nth-of-type(3) {
+                        margin-top: 16px;
+                    }
+                }
+            }
+            .step5 {
+                p {
+                    &:nth-of-type(1) {
+                        margin-top: 16px;
+                        font-weight: bold;
+                    }
+                    &:nth-of-type(2) {
+                        font-weight: bold;
+                        margin-top: 16px;
+                    }
+                    &:nth-of-type(3) {
+                        margin-top: 16px;
+                        font-weight: bold;
+                    }
+                }
+            }
+            & > img {
+                width: 100%;
+                height: 5%;
+                margin: -24px 0;
+                position: relative;
+                z-index: -1;
+                @include responsive(sm) {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.active {
+    display: block;
+}
+
+.place {
+    background-image: url(../img/bangkok.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 100px 0;
+    @include responsive(lg) {
+        background-size: 300%;
+        background-position: -100px -100px;
+    }
+    @include responsive(sm) {
+        padding: 50px 0;
+    }
+    .container {
+        color: white;
+        padding-left: 50px;
+        h2 {
+            @include responsive(lg) {
+                text-align: center;
+            }
+            @include responsive(sm) {
+                font-size: 1.3rem;
+            }
+        }
+        p {
+            &:nth-of-type(1) {
+                margin-top: 24px;
+                font-size: .9rem;
+                @include responsive(sm) {
+                    font-size: .8rem;
+                }
+            }
+            &:nth-of-type(2) {
+                margin-top: 24px;
+                font-size: 1.3rem;
+                @include responsive(sm) {
+                    font-size: .8rem;
+                    margin-top: 12px;
+                }
+            }
+        }
+        ul {
+            margin: 20px;
+            li {
+                list-style: disc;
+                line-height: 1.7rem;
+                @include responsive(sm) {
+                    font-size: .8rem;
+                    line-height: 1.3rem;
+                }
+            }
+        }
+    }
+}
+
+.benefit {
+    background: $mainColor;
+    padding: 48px 0 32px;
+    .container {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @include responsive(lg) {
+            padding: 0 48px;
+        }
+        @include responsive(sm) {
+            padding: 0 16px;
+        }
+        h2 {
+            @include responsive(sm) {
+                font-size: 1.3rem;
+            }
+        }
+        & > p {
+            margin-top: 48px;
+            @include responsive(sm) {
+                font-size: .8rem;
+                margin-top: 32px;
+            }
+            span {
+                color: white;
+            }
+            br {
+                display: none;
+                @include responsive(sm) {
+                    display: inline;
+                }
+            }
+            .br-lg {
+                @include responsive(lg) {
+                    display: inline;
+                }
+            }
+        }
+        h3 {
+            background: $mainColor;
+            width: fit-content;
+            display: block;
+            font-size: 1.7rem;
+            letter-spacing: .1rem;
+            margin: 80px 0 -1.2rem;
+            position: relative;
+            @include responsive(lg) {
+                font-size: 1.5rem;
+            }
+            @include responsive(sm) {
+                margin: 32px 0 -2.3rem;
+                font-size: 1.2rem;
+            }
+            br {
+                display: none;
+                @include responsive(sm) {
+                    display: inline;
+                }
+            }
+        }
+        ul {
+            display: flex;
+            gap: 112px;
+            padding: 48px 64px;
+            border: 2px solid white;
+            width: 100%;
+            @include responsive(lg) {
+                gap: 32px;
+                flex-direction: column;
+                align-items: center;
+            }
+            @include responsive(sm) {
+                gap: 32px;
+                padding: 64px 32px;
+            }
+            li {
+                background: white;
+                border-radius: 50%;
+                height: 250px;
+                width: 250px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                @include responsive(sm) {
+                    width: 100%;
+                    background: none;
+                    flex-direction: row;
+                    height: 100%;
+                    gap: 32px;
+                }
+                p {
+                    &:nth-of-type(1) {
+                        color: $mainColor;
+                        font-size: 1.5rem;
+                        @include responsive(sm) {
+                            width: 30%;
+                            font-size: .8rem;
+                            background: white;
+                            width: 4rem;
+                            height: 4rem;
+                            border-radius: 50%;
+                            line-height: 4rem;
+                        }
+                    }
+                    &:nth-of-type(2) {
+                        font-size: .8rem;
+                        width: 200px;
+                        font-weight: bold;
+                        margin-top: 16px;
+                        @include responsive(sm) {
+                            display: none;
+                        }
+                    }
+                    &:nth-of-type(3) {
+                        display: none;
+                        @include responsive(sm) {
+                            width: 70%;
+                            color: white;
+                            display: block;
+                            text-align: start;
+                            font-size: .8rem;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.pride {
+    background-image: url(../img/pride-image.png);
+    background-size: cover;
+    color: white;
+    padding: 64px 0;
+    @include responsive(sm) {
+        padding: 48px 0;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        .br-sm {
+            display: none;
+            @include responsive(sm) {
+                display: inline;
+            }
+        }
+        .br-lg {
+            @include responsive(sm) {
+                display: none;
+            }
+        }
+        .pride-title {
+            font-size: 1.8rem;
+            @include responsive(lg) {
+                font-size: 1.5rem;
+            }
+            @include responsive(sm) {
+                font-size: 1.2rem;
+            }
+        }
+        p {
+            font-size: 1.2rem;
+            margin-top: 24px;
+            @include responsive(lg) {
+                font-size: 1rem;
+                margin-top: 16px;
+            }
+            @include responsive(sm) {
+                font-size: .7rem;
+            }
+        }
+        .section_title {
+            @include sectionTitle(white);
+            margin-top: 24px;
+            @include responsive(sm) {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.message {
+    padding: 64px 0;
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 1000px;
+        h2 {
+            font-size: 1.8rem;
+            @include responsive(lg) {
+                font-size: 1.5rem;
+            }
+            @include responsive(sm) {
+                font-size: 1.2rem;
+            }
+        }
+        & > p {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 32px;
+            @include responsive(lg) {
+                font-size: 1rem;
+            }
+            @include responsive(sm) {
+                font-size: .9rem;
+                text-align: center;
+            }
+            br {
+                display: none;
+                @include responsive(sm) {
+                    display: inline;
+                }
+            }
+        }
+        .message-content {
+            display: flex;
+            margin-top: 32px;
+            font-size: .9rem;
+            gap: 32px;
+            color: #777;
+            @include responsive(lg) {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            img {
+                width: 200px;
+                height: 160px;
+                object-fit: cover;
+                @include responsive(lg) {
+                    width: 100%;
+                    height: 400px;
+                }
+                @include responsive(sm) {
+                    width: 100%;
+                    height: 200px;
+                }
+            }
+            div {
+                p {
+                    &:nth-of-type(2) {
+                        margin-top: 16px;
+                    }
+                    &:nth-of-type(4) {
+                        margin-top: 16px;
+                    }
+                }
+                ul {
+                    margin: 24px;
+                    li {
+                        list-style: disc;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.request {
+    background: $mainColor;
+    padding: 48px 0;
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h2 {
+            @include responsive(sm) {
+                font-size: 1.2rem;
+            }
+        }
+        p {
+            &:nth-of-type(1) {
+                font-size: .8rem;
+                margin-top: 32px;
+            }
+            &:nth-of-type(2) {
+                font-size: 1.4rem;
+                font-weight: bold;
+                margin-top: 48px;
+            }
+        }
+    }
+}
+
+.faq {
+    padding: 48px 0;
+    .container {
+        max-width: 1000px;
+        h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            @include responsive(lg) {
+                font-size: 1.5rem;
+            }
+            @include responsive(sm) {
+                font-size: 1.2rem;
+            }
+        }
+        ul {
+            margin-top: 48px;
+            li {
+                cursor: pointer;
+                user-select: none;
+                margin-top: 4px;
+                .acordion-menu {
+                    @include isaraAcordion();
+                    font-weight: bold;
+                    font-size: 1.2rem;
+                    border: 1px solid #eee;
+                    padding: 16px;
+                    letter-spacing: .05rem;
+                    @include responsive(lg) {
+                        font-size: 1rem
+                    }
+                    @include responsive(sm) {
+                        font-size: .9rem;
+                        padding: 8px;
+                    }
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                    &::after {
+                        opacity: .3;
+                    }
+                    i {
+                        color: $subColor;
+                        margin-right: 5px;
+                    }
+                }
+                .acordion-content {
+                    display: none;
+                    padding: 20px;
+                    border-bottom: 1px solid #eee;
+                    letter-spacing: .05rem;
+                    @include responsive(lg) {
+                        font-size: .8rem;
+                    }
+                    @include responsive(sm) {
+                        font-size: .7rem;
+                        padding: 16px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+footer {
+    padding: 32px 0;
+    background: #ddd;
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        p {
+            font-size: .5rem;
+            color: #555;
+        }
+        .sns {
+            .twitter-share-button {
+                vertical-align: bottom;
+            }
+            .fb-share-button {
+                &:hover {
+                    filter: brightness(90%);
+                }
+            }
+        }
+        small {
+            font-size: .5rem;
+            margin-top: 32px;
+            color: #555;
+
+        }
+        a {
+            color: $subColor;
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.page-top {
+    font-size: 2.5rem;
+    width: 70px;
+    height: 70px;
+    background: #ccc;
+    position: fixed;
+    bottom: 70px;
+    right: 70px;
+    text-align: center;
+    cursor: pointer;
+    @include responsive(sm) {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+        bottom: 35px;
+        right: 10px;
+    }
+    &:hover {
+        filter: brightness(90%);
+    }
+    i {
+        transform: translate(0, 5px);
+    }
+}

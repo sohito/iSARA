@@ -1,0 +1,11 @@
+@mixin responsive($size) {
+    $width: 0;
+    @if ($size == lg) {
+        $width: 1200px;
+    } @else if ($size == sm) {
+        $width: 768px;
+    }
+    @media (max-width:$width) {
+        @content; 
+    }
+}

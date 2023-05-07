@@ -1,0 +1,24 @@
+
+@use "responsive" as *;
+
+@mixin isaraAcordion {
+    position: relative;
+    &::after {
+        font-family: 'Material Icons';
+        content: '\e5cf';
+        position: absolute;
+        top: 50%;
+        right: 0;
+        font-size: 2rem;
+        transform: translate(0, -50%);
+    }
+    &.open::after {
+        font-family: 'Material Icons';
+        content: '\e5ce';
+        position: absolute;
+        top: 50%;
+        right: 0;
+        font-size: 2rem;
+        transform: translate(0, -50%);
+    }
+}

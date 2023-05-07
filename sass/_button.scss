@@ -1,0 +1,41 @@
+
+@use "responsive" as *;
+
+.button {
+    background: rgb(240, 107, 107);
+    color: white;
+    font-size: 14px;
+    padding: 1em 3em;
+    border-radius: 3em;
+    letter-spacing: .08em;
+    @include responsive(lg) {
+        font-size: 12px; 
+    }
+    @include responsive(sm) {
+        padding: 10px 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &-md {
+        @extend .button;
+        @include responsive(sm) {
+            border-radius: 0;
+        }
+    }
+    &-lg {
+        @extend .button;
+        font-size: 28px;
+        width: 100%;
+        margin: 32px 0 32px;
+        @include responsive(lg) {
+            font-size: 20px; 
+            width: 80%;
+            margin-top: 16px;
+        }
+    }
+    &:hover {
+        background-color: rgb(233, 72, 72);
+    }
+    
+}
